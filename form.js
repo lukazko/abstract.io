@@ -110,5 +110,8 @@ function processFile() {
         $("#dropzone h2").remove();
         $("#dropzone").append('<h1>Drag and Drop file with conversation here<br />or<br />Click to select file</h1>');
     }  
-   
+    
+    else {
+        alert("You have to upload file firstly");
+    }   
 }
