@@ -99,3 +99,16 @@ function convertSize(size) {
     var i = parseInt(Math.floor(Math.log(size) / Math.log(1024)));
     return Math.round(size / Math.pow(1024, i), 2) + ' ' + sizes[i];
 }
+
+// Click on process button
+function processFile() {
+    if ($( ".thumbnail" ).length>0) {
+        window.open('result.html');
+    
+    // After click => reload dragzone to initial state
+        $(".thumbnail").remove();
+        $("#dropzone h2").remove();
+        $("#dropzone").append('<h1>Drag and Drop file with conversation here<br />or<br />Click to select file</h1>');
+    }  
+   
+}
