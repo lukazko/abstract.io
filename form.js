@@ -10,21 +10,21 @@ $(function() {
     $("html").on("drop", function(e) { e.preventDefault(); e.stopPropagation(); });
 
     // Drag enter
-    $('.upload-area').on('dragenter', function (e) {
+    $('.dropzone').on('dragenter', function (e) {
         e.stopPropagation();
         e.preventDefault();
         $("h1").text("Drop");
     });
 
     // Drag over
-    $('.upload-area').on('dragover', function (e) {
+    $('.dropzone').on('dragover', function (e) {
         e.stopPropagation();
         e.preventDefault();
         $("h1").text("Drop");
     });
 
     // Drop
-    $('.upload-area').on('drop', function (e) {
+    $('.dropzone').on('drop', function (e) {
         e.stopPropagation();
         e.preventDefault();
 
@@ -39,7 +39,7 @@ $(function() {
     });
 
     // Open file selector on div click
-    $("#uploadfile").click(function(){
+    $("#dropzone").click(function(){
         $("#file").click();
     });
 
@@ -73,8 +73,8 @@ function uploadData(formdata){
 
 // Added thumbnail
 function addThumbnail(data){
-    $("#uploadfile h1").remove(); 
-    var len = $("#uploadfile div.thumbnail").length;
+    $("#dropzone h1").remove();  
+    var len = $("#dropzone div.thumbnail").length;
 
     var num = Number(len);
     num = num + 1;
@@ -84,10 +84,11 @@ function addThumbnail(data){
     var src = data.src;
 
     // Creating an thumbnail, name and size of file
-    $("#uploadfile").append('<div id="thumbnail_'+num+'" class="thumbnail"></div>');
+    $("#dropzone").append('<div id="thumbnail_'+num+'" class="thumbnail"></div>');
     $("#thumbnail_"+num).append('<img src="'+src+'" width="100%" height="100%">');
     $("#thumbnail_"+num).append('<span class="name">'+name+'<span><br>');
     $("#thumbnail_"+num).append('<span class="size">'+size+'<span>');
+    $("#dropzone").append('<h2>Now click on process or add more files</h2>');
 
 }
 
