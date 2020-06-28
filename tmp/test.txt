@@ -1,0 +1,3 @@
+21.3.19;petr;ahoj;3
+21.3.20;jana;blabla;5
+24.4.20;karel;nvm;1

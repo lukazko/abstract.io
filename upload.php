@@ -7,13 +7,13 @@ $filename = $_FILES['file']['name'];
 $filesize = $_FILES['file']['size'];
 
 /* Location */
-$location = "upload/".$filename;
+$location = "uploads/".$filename;
 
 $return_arr = array();
 
-/* Upload file */
+/* Upload files */
 if(move_uploaded_file($_FILES['file']['tmp_name'],$location)){
-    $src = "default.png";
+    $src = "img/default.png";
 
     // checking file is image or not
     if(is_array(getimagesize($location))){
