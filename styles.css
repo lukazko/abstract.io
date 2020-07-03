@@ -23,7 +23,7 @@ h1 {
     color: darkslategray;
 }
 
-.dropzone h1{
+.dropzone h2{
     text-align: center;
     margin-top: 150px;
     font-weight: normal;
@@ -31,9 +31,9 @@ h1 {
     color: darkslategray;
 }
 
-.dropzone h2{
+#h2-process {
     text-align: center;
-    margin-top: 200px;
+    margin-top: 210px;
     font-weight: normal;
     line-height: 50px;
     color: darkslategray;
@@ -41,6 +41,25 @@ h1 {
 
 #file{
     display: none;
+}
+
+.result-zone {
+    margin-top: 100px;
+    height: 350px;
+    text-align: center;
+}
+
+.result-zone table {
+    margin: 0 auto;
+    text-align: left;
+}
+
+.result-zone table th {
+    padding: 5px 20px 5px 20px;
+}
+
+.result-zone table .result-row th {
+    font-weight: normal;
 }
 
 /* Thumbnail of file */

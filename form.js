@@ -4,7 +4,7 @@ $(function() {
     $("html").on("dragover", function(e) {
         e.preventDefault();
         e.stopPropagation();
-        $("h1").text("Drag here");
+        $("h2").text("Drag here");
     });
 
     $("html").on("drop", function(e) { e.preventDefault(); e.stopPropagation(); });
@@ -13,14 +13,14 @@ $(function() {
     $('.dropzone').on('dragenter', function (e) {
         e.stopPropagation();
         e.preventDefault();
-        $("h1").text("Drop");
+        $("h2").text("Drop");
     });
 
     // Drag over
     $('.dropzone').on('dragover', function (e) {
         e.stopPropagation();
         e.preventDefault();
-        $("h1").text("Drop");
+        $("h2").text("Drop");
     });
 
     // Drop
@@ -28,7 +28,7 @@ $(function() {
         e.stopPropagation();
         e.preventDefault();
 
-        $("h1").text("Upload");
+        $("h2").text("Upload");
 
         var file = e.originalEvent.dataTransfer.files;
         var fd = new FormData();
@@ -73,7 +73,7 @@ function uploadData(formdata){
 
 // Added thumbnail
 function addThumbnail(data){
-    $("#dropzone h1").remove();  
+    $("#dropzone h2").remove();  
     var len = $("#dropzone div.thumbnail").length;
 
     var num = Number(len);
@@ -88,7 +88,7 @@ function addThumbnail(data){
     $("#thumbnail_"+num).append('<img src="'+src+'" width="100%" height="100%">');
     $("#thumbnail_"+num).append('<span class="name">'+name+'<span><br>');
     $("#thumbnail_"+num).append('<span class="size">'+size+'<span>');
-    $("#dropzone").append('<h2>Now click on process or add more files</h2>');
+    $("#dropzone").append('<h2 id="h2-process">Now click on process or add more files</h2>');
 
 }
 
@@ -105,10 +105,10 @@ function processFile() {
     if ($( ".thumbnail" ).length>0) {
         window.open('result.html');
     
-    // After click => reload dragzone to initial state
+        // After click => reload dragzone to initial state
         $(".thumbnail").remove();
         $("#dropzone h2").remove();
-        $("#dropzone").append('<h1>Drag and Drop file with conversation here<br />or<br />Click to select file</h1>');
+        $("#dropzone").append('<h2>Drag and Drop file with conversation here<br />or<br />Click to select file</h2>');
     }  
     
     else {
