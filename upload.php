@@ -23,3 +23,4 @@ if(move_uploaded_file($_FILES['file']['tmp_name'],$location)){
 }
 
 echo json_encode($return_arr);
+?>
