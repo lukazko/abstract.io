@@ -1,20 +1,3 @@
-// Will show the second container and scroll to centre of it
-function scroll2() {
-    $('.container-2').show();
-    $('html,body').animate({
-        scrollTop: $(".container-2").offset().top + $(".container-2").height() / 2},
-        'slow');
-}
-
-
-// Will show the third container and scroll to centre of it
-function scroll3() {
-    $('.container-3').show();
-    $('html, body').animate({
-        scrollTop: $(".container-3").offset().top + $(".container-3").height() / 2},
-        'slow');
-}
-
 $(function() {
 
     // preventing page from redirecting
@@ -71,6 +54,28 @@ $(function() {
         uploadData(fd);
     });
 });
+
+// Will show the second container and scroll to centre of it
+function scroll2() {
+    $('.container-2').show();
+    $('html,body').animate({
+        scrollTop: $(".container-2").offset().top + $(".container-2").height() / 2},'slow');
+}
+
+
+// Will show the third container and scroll to centre of it
+function scroll3() {
+    $('.container-3').show();
+    $('html, body').animate({
+        scrollTop: $(".container-3").offset().top + $(".container-3").height() / 2},'slow');
+}
+
+
+// Will scroll back up to input-zone
+function scrollBack2() {
+    $('html,body').animate({
+        scrollTop: $(".container-2").offset().top+2},'slow');
+}
 
 // Sending AJAX request and upload file
 function uploadData(formdata){
@@ -167,6 +172,7 @@ function getResult() {
             
             $(".result-zone table").show(); // show generated table
             $(".container-3").show(); 
+            $("#delete-btn").show();
             scroll3(); // scroll to generated table
         }
     });
@@ -174,8 +180,9 @@ function getResult() {
 
 // Function for deleting of all result rows
 function delResult() { 
+    scrollBack2();
     $(".result-row").remove();
     $(".result-zone p").remove();
     $(".result-zone table").hide();
-    $(".container-3").hide();
+    $("#delete-btn").hide();
 }

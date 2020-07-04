@@ -66,11 +66,11 @@ h1 {
     margin-top: 50px;
     height: 350px;
     text-align: center;
-    padding-top: 18%;
+    padding-top: 15%;
 }
 
 .input-zone {
-    padding-top: 15%;
+    padding-top: 20%;
 }
 
 .result-zone table {
@@ -116,13 +116,13 @@ h1 {
     text-align: center;
     margin-left: 5px;
     margin-right: 5px;
- }
+}
 
- .btn:hover {
+.btn:hover {
     background-color: #0555b1;
- }
+}
 
- #number-of-results {
+#number-of-results {
     border-radius: 10px;
     font-size: 20px;
     border-color: black;
@@ -132,4 +132,8 @@ h1 {
     margin-right: 5px;
     width: 100px;
     text-align: center;
- }
+}
+
+#number-of-results:hover {
+    border: 2px dashed rgb(85, 85, 85);       
+}
