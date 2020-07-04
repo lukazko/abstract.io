@@ -8,10 +8,11 @@
     <link rel="stylesheet" type="text/css" href="styles.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script type="text/javascript" src="form.js"></script>
+    <script type="text/javascript" src="result.js"></script>
 </head>
 
 <body>
-    <div class="container">
+    <div class="container-1">
         <h1><a href="index.html">Highlight.io</a></h1>
         <input type="file" name="file" id="file">
 
@@ -20,6 +21,25 @@
         </div>
 
         <a href="#" class="btn" id="process-btn" onclick=processFile()>Process</a>
+        <a class="btn" id="btn"  onclick=scroll2()>Scroll</a>
+    </div>
+    <div class="container-2">   
+        <div class="input-zone">
+            Number of highlights <input type="text" id="number-of-results"><br>
+            <a class="btn" id="result-btn" onclick=getResult()>Show highlights</a>
+            <a class="btn" id="delete-btn" onclick=delResult()>Delete highlights</a>
+        </div>
+    </div>
+    <div class="container-3">
+        <div class="result-zone">
+            <table class="result-table">
+                <tr>
+                    <th>Time</th>
+                    <th>Author</th>
+                    <th>Message</th>
+                </tr>
+            </table>
+        </div>
     </div>
 </body>
 

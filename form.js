@@ -1,3 +1,20 @@
+// Will show the second container and scroll to centre of it
+function scroll2() {
+    $('.container-2').show();
+    $('html,body').animate({
+        scrollTop: $(".container-2").offset().top + $(".container-2").height() / 2},
+        'slow');
+}
+
+
+// Will show the third container and scroll to centre of it
+function scroll3() {
+    $('.container-3').show();
+    $('html, body').animate({
+        scrollTop: $(".container-3").offset().top + $(".container-3").height() / 2},
+        'slow');
+}
+
 $(function() {
 
     // preventing page from redirecting

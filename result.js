@@ -31,6 +31,8 @@ function getResult() {
             }
             
             $(".result-zone table").show(); // show generated table
+            $(".container-3").show(); 
+            scroll3(); // scroll to generated table
         }
     });
 }
