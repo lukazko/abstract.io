@@ -59,6 +59,7 @@ $(function () {
 function clearIt() {
     $(".container-2").hide();
     $(".container-3").hide();
+    $(".go-up-btn").hide();
 }
 
 // Will show the second container and scroll to centre of it
@@ -134,12 +135,15 @@ function convertSize(size) {
 // Click on process button
 function processFile() {
     if ($(".thumbnail").length > 0) {
-        window.open('result.html');
+        //window.open('result.html');
+        scroll2();
 
         // After click => reload dragzone to initial state
         $(".thumbnail").remove();
         $("#dropzone h2").remove();
         $("#dropzone").append('<h2>Drag and Drop file with conversation here<br />or<br />Click to select file</h2>');
+
+        $.ajax({url: 'insert.php', success: function (returnData) {console.log('hoj')}});
     }
 
     else {
