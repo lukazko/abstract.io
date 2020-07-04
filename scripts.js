@@ -183,6 +183,7 @@ function getResult() {
             $(".container-3").show();
             $("#delete-btn").show();
             scroll3(); // scroll to generated table
+            $("#number-of-results").val('');
         }
     });
 }
