@@ -55,6 +55,12 @@ $(function() {
     });
 });
 
+// Hide everything except the start screen
+function clearIt() {
+    $(".container-2").hide();
+    $(".container-3").hide();
+}
+
 // Will show the second container and scroll to centre of it
 function scroll2() {
     $('.container-2').show();
@@ -186,3 +192,5 @@ function delResult() {
     $(".result-zone table").hide();
     $("#delete-btn").hide();
 }
+
+
