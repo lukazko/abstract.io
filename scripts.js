@@ -1,13 +1,13 @@
-$(function() {
+$(function () {
 
     // preventing page from redirecting
-    $("html").on("dragover", function(e) {
+    $("html").on("dragover", function (e) {
         e.preventDefault();
         e.stopPropagation();
         $("h2").text("Drag here");
     });
 
-    $("html").on("drop", function(e) { e.preventDefault(); e.stopPropagation(); });
+    $("html").on("drop", function (e) { e.preventDefault(); e.stopPropagation(); });
 
     // Drag enter
     $('.dropzone').on('dragenter', function (e) {
@@ -39,17 +39,17 @@ $(function() {
     });
 
     // Open file selector on div click
-    $("#dropzone").click(function(){
+    $("#dropzone").click(function () {
         $("#file").click();
     });
 
     // file selected
-    $("#file").change(function(){
+    $("#file").change(function () {
         var fd = new FormData();
 
         var files = $('#file')[0].files[0];
 
-        fd.append('file',files);
+        fd.append('file', files);
 
         uploadData(fd);
     });
@@ -64,27 +64,30 @@ function clearIt() {
 // Will show the second container and scroll to centre of it
 function scroll2() {
     $('.container-2').show();
-    $('html,body').animate({
-        scrollTop: $(".container-2").offset().top + $(".container-2").height() / 2},'slow');
+    $('.go-up-btn').show();
+    $('html,body').animate({ scrollTop: $(".container-2").offset().top + $(".container-2").height() / 2 }, 'slow');
 }
-
 
 // Will show the third container and scroll to centre of it
 function scroll3() {
     $('.container-3').show();
-    $('html, body').animate({
-        scrollTop: $(".container-3").offset().top + $(".container-3").height() / 2},'slow');
+    $('.go-up-btn').show();
+    $('html, body').animate({ scrollTop: $(".container-3").offset().top + $(".container-3").height() / 2 }, 'slow');
 }
-
 
 // Will scroll back up to input-zone
 function scrollBack2() {
-    $('html,body').animate({
-        scrollTop: $(".container-2").offset().top+2},'slow');
+    $('html,body').animate({ scrollTop: $(".container-2").offset().top + 2 }, 'slow');
+}
+
+// Will scroll back up to start screen
+function scrollBack1() {
+    $('html,body').animate({ scrollTop: $(".container-1").offset().top - 30 }, 'slow');
+    //$('.go-up-btn').hide();
 }
 
 // Sending AJAX request and upload file
-function uploadData(formdata){
+function uploadData(formdata) {
 
     $.ajax({
         url: 'upload.php',
@@ -93,15 +96,15 @@ function uploadData(formdata){
         contentType: false,
         processData: false,
         dataType: 'json',
-        success: function(response){
+        success: function (response) {
             addThumbnail(response);
         }
     });
 }
 
 // Added thumbnail
-function addThumbnail(data){
-    $("#dropzone h2").remove();  
+function addThumbnail(data) {
+    $("#dropzone h2").remove();
     var len = $("#dropzone div.thumbnail").length;
 
     var num = Number(len);
@@ -112,10 +115,10 @@ function addThumbnail(data){
     var src = data.src;
 
     // Creating an thumbnail, name and size of file
-    $("#dropzone").append('<div id="thumbnail_'+num+'" class="thumbnail"></div>');
-    $("#thumbnail_"+num).append('<img src="'+src+'" width="100%" height="100%">');
-    $("#thumbnail_"+num).append('<span class="name">'+name+'<span><br>');
-    $("#thumbnail_"+num).append('<span class="size">'+size+'<span>');
+    $("#dropzone").append('<div id="thumbnail_' + num + '" class="thumbnail"></div>');
+    $("#thumbnail_" + num).append('<img src="' + src + '" width="100%" height="100%">');
+    $("#thumbnail_" + num).append('<span class="name">' + name + '<span><br>');
+    $("#thumbnail_" + num).append('<span class="size">' + size + '<span>');
     $("#dropzone").append('<h2 id="h2-process">Now click on process or add more files</h2>');
 
 }
@@ -130,18 +133,18 @@ function convertSize(size) {
 
 // Click on process button
 function processFile() {
-    if ($( ".thumbnail" ).length>0) {
+    if ($(".thumbnail").length > 0) {
         window.open('result.html');
-    
+
         // After click => reload dragzone to initial state
         $(".thumbnail").remove();
         $("#dropzone h2").remove();
         $("#dropzone").append('<h2>Drag and Drop file with conversation here<br />or<br />Click to select file</h2>');
-    }  
-    
+    }
+
     else {
         alert("You have to upload file firstly");
-    }   
+    }
 }
 
 // Function for generation of result rows
@@ -175,9 +178,9 @@ function getResult() {
             if (results.length == 0) {
                 $('.result-zone').append('<p>No results were found!</p>');
             }
-            
+
             $(".result-zone table").show(); // show generated table
-            $(".container-3").show(); 
+            $(".container-3").show();
             $("#delete-btn").show();
             scroll3(); // scroll to generated table
         }
@@ -185,7 +188,7 @@ function getResult() {
 }
 
 // Function for deleting of all result rows
-function delResult() { 
+function delResult() {
     scrollBack2();
     $(".result-row").remove();
     $(".result-zone p").remove();

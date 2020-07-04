@@ -137,3 +137,14 @@ h1 {
 #number-of-results:hover {
     border: 2px dashed rgb(85, 85, 85);       
 }
+
+.go-up-btn {
+    position: fixed;
+    text-align: right;
+    display: none;
+    bottom: 0;
+    right: 0;
+    padding-right: 20px;
+    padding-bottom: 20px;
+    cursor: pointer;
+}
