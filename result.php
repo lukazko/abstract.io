@@ -8,8 +8,10 @@ $dbName = 'highlights';
 
 $pdo = new PDO("mysql:host=$dbServer;dbname=$dbName", $dbUser, $dbPassword);
 
+$lim = $_GET['lim'] ?: 1;
+
 // SQL query that we will be running.
-$sql = "SELECT `Time`, `Name`, `Text` FROM `result` ORDER BY `Rating` DESC LIMIT 2";
+$sql = "SELECT `Time`, `Name`, `Text` FROM `result` ORDER BY `Rating` DESC LIMIT $lim";
 
 // Prepare SELECT statement.
 $statement = $pdo->prepare($sql);

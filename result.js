@@ -1,8 +1,15 @@
 // Function for generation of result rows
 function getResult() {
 
+    // Get number of result from input
+    var num = $('#number-of-results').val().trim();
+
     $.ajax({
-        url: 'result.php', // The URL of the PHP file that searches MySQL.
+        url: 'result.php', // The URL of the PHP file that searches MySQL
+        // input data
+        data: {
+            lim: num
+        },
         success: function (returnData) {
 
             delResult(); // deleting of all result rows
@@ -30,7 +37,8 @@ function getResult() {
 
 // Function for deleting of all result rows
 function delResult() {
-    $(".result-row th").remove();
+    $(".result-row").remove();
+    $(".result-zone p").remove();
     $(".result-zone table").hide();
 }
 
