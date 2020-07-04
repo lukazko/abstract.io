@@ -22,6 +22,8 @@ function getResult() {
             if (results.length == 0) {
                 $('.result-zone').append('<p>No results were found!</p>');
             }
+            
+            $(".result-zone table").show(); // show generated table
         }
     });
 }
@@ -29,5 +31,6 @@ function getResult() {
 // Function for deleting of all result rows
 function delResult() {
     $(".result-row th").remove();
+    $(".result-zone table").hide();
 }
 
