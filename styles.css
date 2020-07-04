@@ -3,6 +3,10 @@ body {
     font-family: sans-serif;
 }
 
+a {
+    text-decoration: none;
+}
+
 .dropzone{
     width: 70%;
     height: 500px;
