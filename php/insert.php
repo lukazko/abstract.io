@@ -11,6 +11,7 @@ $fieldseparator = ";";
 $lineseparator = "\n";
 $csvfile = "../uploads/test.csv";
 
+// Importing data from csv to db
 if(!file_exists($csvfile)) {
     die("File not found. Make sure you specified the correct path.");
 }
@@ -34,6 +35,13 @@ $affectedRows = $pdo->exec("
 
 echo "Loaded a total of $affectedRows records from this csv file.";
 
+
+// Procedures wich scoring conversation
+$sql = "CALL transferData();CALL getScore();";
+$statement = $pdo->prepare($sql);
+$statement->execute();
+
 // Deleting everything in uploads dir
 array_map('unlink', array_filter((array) glob("../uploads/*")));
+
 ?>
