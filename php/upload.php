@@ -1,17 +1,16 @@
 <?php
 
-/* Getting file name */
+// Getting file name and size
 $filename = $_FILES['file']['name'];
-
-/* Getting File size */
 $filesize = $_FILES['file']['size'];
 
-/* Location */
+// Location of upload directory
 $location = "../uploads/".$filename;
 
+// Declaration for future JSON
 $return_arr = array();
 
-/* Upload files */
+// Upload file
 if(move_uploaded_file($_FILES['file']['tmp_name'],$location)){
     $src = "img/default.png";
 
@@ -22,6 +21,7 @@ if(move_uploaded_file($_FILES['file']['tmp_name'],$location)){
     $return_arr = array("name" => $filename,"size" => $filesize, "src"=> $src);
 }
 
+// Returning JSON with value for HTML element
 echo json_encode($return_arr);
 
 ?>

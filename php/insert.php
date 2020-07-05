@@ -27,13 +27,13 @@ try {
         die("database connection failed: ".$e->getMessage());
     }
 
-// Import of multiple files into db
+// Import of multiple files into db, every csv in uploads folder is loaded separate
 foreach($csvfiles as $file){
     $affectedRows = $pdo->exec("
     LOAD DATA LOCAL INFILE ".$pdo->quote($file)." INTO TABLE `$dbTable`
       FIELDS TERMINATED BY ".$pdo->quote($fieldseparator)."
       LINES TERMINATED BY ".$pdo->quote($lineseparator)."(Time,Name,Text)");
-      echo "Loaded a total of $affectedRows records from this csv file.\n";
+      echo "Loaded a total of $affectedRows records from this csv file.\n"; // Log about number of processed rows
 }
 
 // Procedures wich scoring conversation

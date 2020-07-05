@@ -8,6 +8,7 @@ $dbName = 'highlights';
 
 $pdo = new PDO("mysql:host=$dbServer;dbname=$dbName", $dbUser, $dbPassword);
 
+// Default value of LIMIT
 $lim = $_GET['lim'] ?: 1;
 
 // SQL query that we will be running.
