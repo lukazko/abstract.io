@@ -24,3 +24,5 @@ $results = $statement->fetchAll(PDO::FETCH_ASSOC);
 
 // Echo the $results array in a JSON format
 echo json_encode($results);
+
+?>
