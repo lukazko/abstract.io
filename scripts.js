@@ -67,6 +67,7 @@ function scroll2() {
     $('.container-2').show();
     $('.go-up-btn').show();
     $('html,body').animate({ scrollTop: $(".container-2").offset().top + $(".container-2").height() / 2 }, 'slow');
+    $.ajax({url: 'insert.php', success: function (returnData) {console.log('hoj')}});
 }
 
 // Will show the third container and scroll to centre of it
@@ -142,8 +143,6 @@ function processFile() {
         $(".thumbnail").remove();
         $("#dropzone h2").remove();
         $("#dropzone").append('<h2>Drag and Drop file with conversation here<br />or<br />Click to select file</h2>');
-
-        $.ajax({url: 'insert.php', success: function (returnData) {console.log('hoj')}});
     }
 
     else {
