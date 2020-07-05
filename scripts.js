@@ -60,6 +60,8 @@ function clearIt() {
     $(".container-2").hide();
     $(".container-3").hide();
     $(".go-up-btn").hide();
+    $.ajax({url: 'delete.php', success: function (returnData) {console.log('hoj')}});
+    initDragzone(); // After click => reload dragzone to initial state
 }
 
 // Will show the second container and scroll to centre of it
@@ -67,7 +69,6 @@ function scroll2() {
     $('.container-2').show();
     $('.go-up-btn').show();
     $('html,body').animate({ scrollTop: $(".container-2").offset().top + $(".container-2").height() / 2 }, 'slow');
-    $.ajax({url: 'insert.php', success: function (returnData) {console.log('hoj')}});
 }
 
 // Will show the third container and scroll to centre of it
@@ -136,18 +137,22 @@ function convertSize(size) {
 // Click on process button
 function processFile() {
     if ($(".thumbnail").length > 0) {
-        //window.open('result.html');
-        scroll2();
-
-        // After click => reload dragzone to initial state
-        $(".thumbnail").remove();
-        $("#dropzone h2").remove();
-        $("#dropzone").append('<h2>Drag and Drop file with conversation here<br />or<br />Click to select file</h2>');
+        // Importing data from files to csv
+        $.ajax({url: 'insert.php', success: function (returnData) {console.log('ok')}});
+        scroll2(); // One-page version       
+        initDragzone(); // After click => reload dragzone to initial state
     }
 
     else {
         alert("You have to upload file firstly");
     }
+}
+
+function initDragzone() {
+    // Reload dragzone to initial state
+    $(".thumbnail").remove();
+    $("#dropzone h2").remove();
+    $("#dropzone").append('<h2>Drag and Drop file with conversation here<br />or<br />Click to select file</h2>');
 }
 
 // Function for generation of result rows

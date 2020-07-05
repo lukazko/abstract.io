@@ -34,4 +34,5 @@ $affectedRows = $pdo->exec("
 
 echo "Loaded a total of $affectedRows records from this csv file.";
 
+unlink($csvfile); // deleting saved file after import
 ?>
