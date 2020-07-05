@@ -1,3 +1,10 @@
+$(window).scroll(function(){
+    scroll = $(window).scrollTop();
+  
+    if (scroll >= 100) $('#headline').addClass('sticky');
+    else $('#headline').removeClass('sticky');
+  });
+
 $(function () {
 
     // preventing page from redirecting
@@ -85,7 +92,7 @@ function scrollBack2() {
 
 // Will scroll back up to start screen
 function scrollBack1() {
-    $('html,body').animate({ scrollTop: $(".container-1").offset().top - 30 }, 'slow');
+    $('html,body').animate({ scrollTop: $(".container-1").offset().top - 50 }, 'slow');
     //$('.go-up-btn').hide();
 }
 
