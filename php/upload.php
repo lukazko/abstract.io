@@ -7,7 +7,7 @@ $filename = $_FILES['file']['name'];
 $filesize = $_FILES['file']['size'];
 
 /* Location */
-$location = "uploads/".$filename;
+$location = "../uploads/".$filename;
 
 $return_arr = array();
 
@@ -23,4 +23,5 @@ if(move_uploaded_file($_FILES['file']['tmp_name'],$location)){
 }
 
 echo json_encode($return_arr);
+
 ?>

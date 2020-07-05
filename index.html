@@ -5,14 +5,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Highlight.io | Get highlights of long conversation!</title>
-    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="stylesheet" type="text/css" href="css/styles.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-    <script type="text/javascript" src="form.js"></script>
+    <script type="text/javascript" src="js/scripts.js"></script>
 </head>
 
 <body>
-    <div class="container">
-        <h1>Highlight.io</h1>
+    <div class="container-1">
+        <h1><a href="index.html">Highlight.io</a></h1>
         <input type="file" name="file" id="file">
 
         <div class="dropzone" id="dropzone">
@@ -20,7 +20,29 @@
         </div>
 
         <a href="#" class="btn" id="process-btn" onclick=processFile()>Process</a>
+        <!--<a class="btn" id="btn" onclick=scroll2()>Scroll</a>--> <!-- Testing button for quick debugging -->
+        <a class="btn" id="clear-btn" onclick=clearIt()>Clear</a>
     </div>
+    <div class="container-2">   
+        <div class="input-zone">
+            Number of highlights <input type="text" id="number-of-results"><br>
+            <a class="btn" id="result-btn" onclick=getResult()>Show highlights</a>
+        </div>
+    </div>
+    <div class="go-up-btn"><a onclick=scrollBack1()>Go up 🡩</a></div>
+    <div class="container-3">
+        <div class="result-zone">
+            <table class="result-table">
+                <tr>
+                    <th>Time</th>
+                    <th>Author</th>
+                    <th>Message</th>
+                </tr>
+            </table><br>
+            <a class="btn" id="delete-btn" onclick=delResult()>Delete highlights</a>
+        </div>
+    </div>
+    
 </body>
 
 </html>
