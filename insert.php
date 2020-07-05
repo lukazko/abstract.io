@@ -34,5 +34,6 @@ $affectedRows = $pdo->exec("
 
 echo "Loaded a total of $affectedRows records from this csv file.";
 
-unlink($csvfile); // deleting saved file after import
+// Deleting everything in uploads dir
+array_map('unlink', array_filter((array) glob("uploads/*")));
 ?>
