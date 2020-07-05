@@ -60,7 +60,7 @@ function clearIt() {
     $(".container-2").hide();
     $(".container-3").hide();
     $(".go-up-btn").hide();
-    $.ajax({url: 'delete.php', success: function (returnData) {console.log('hoj')}});
+    $.ajax({url: 'php/delete.php', success: function (returnData) {console.log('hoj')}});
     initDragzone(); // After click => reload dragzone to initial state
 }
 
@@ -93,7 +93,7 @@ function scrollBack1() {
 function uploadData(formdata) {
 
     $.ajax({
-        url: 'upload.php',
+        url: 'php/upload.php',
         type: 'post',
         data: formdata,
         contentType: false,
@@ -138,7 +138,7 @@ function convertSize(size) {
 function processFile() {
     if ($(".thumbnail").length > 0) {
         // Importing data from files to csv
-        $.ajax({url: 'insert.php', success: function (returnData) {console.log('ok')}});
+        $.ajax({url: 'php/insert.php', success: function (returnData) {console.log('ok')}});
         scroll2(); // One-page version       
         initDragzone(); // After click => reload dragzone to initial state
     }
@@ -162,7 +162,7 @@ function getResult() {
     var num = $('#number-of-results').val().trim();
 
     $.ajax({
-        url: 'result.php', // The URL of the PHP file that searches MySQL
+        url: 'php/result.php', // The URL of the PHP file that searches MySQL
         // input data
         data: {
             lim: num

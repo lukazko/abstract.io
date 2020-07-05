@@ -9,7 +9,7 @@ $dbTable = "input"; // Table for saving data
 // CSV file specification
 $fieldseparator = ";"; 
 $lineseparator = "\n";
-$csvfile = "uploads/test.csv";
+$csvfile = "../uploads/test.csv";
 
 if(!file_exists($csvfile)) {
     die("File not found. Make sure you specified the correct path.");
@@ -35,5 +35,5 @@ $affectedRows = $pdo->exec("
 echo "Loaded a total of $affectedRows records from this csv file.";
 
 // Deleting everything in uploads dir
-array_map('unlink', array_filter((array) glob("uploads/*")));
+array_map('unlink', array_filter((array) glob("../uploads/*")));
 ?>
