@@ -60,7 +60,7 @@ function clearIt() {
     $(".container-2").hide();
     $(".container-3").hide();
     $(".go-up-btn").hide();
-    $.ajax({url: 'php/delete.php', success: function (returnData) {console.log('hoj')}});
+    $.ajax({url: 'php/delete.php', success: function (returnData) {console.log('ok')}});
     initDragzone(); // After click => reload dragzone to initial state
 }
 

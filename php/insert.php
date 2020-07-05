@@ -9,13 +9,13 @@ $dbTable = "input"; // Table for saving data
 // CSV file specification
 $fieldseparator = ";"; 
 $lineseparator = "\n";
-$csvfile = "../uploads/test.csv";
+$csvfiles = glob('../uploads/*.csv');
 
-// Importing data from csv to db
-if(!file_exists($csvfile)) {
-    die("File not found. Make sure you specified the correct path.");
-}
+//if(!file_exists($csvfiles)) {
+//    die("File not found. Make sure you specified the correct path.");
+//}
 
+// Connecting to db
 try {
     $pdo = new PDO("mysql:host=$dbServer;dbname=$dbName", $dbUser, $dbPassword,
         array(
@@ -27,14 +27,14 @@ try {
         die("database connection failed: ".$e->getMessage());
     }
 
-$affectedRows = $pdo->exec("
-    LOAD DATA LOCAL INFILE ".$pdo->quote($csvfile)." INTO TABLE `$dbTable`
+// Import of multiple files into db
+foreach($csvfiles as $file){
+    $affectedRows = $pdo->exec("
+    LOAD DATA LOCAL INFILE ".$pdo->quote($file)." INTO TABLE `$dbTable`
       FIELDS TERMINATED BY ".$pdo->quote($fieldseparator)."
-      LINES TERMINATED BY ".$pdo->quote($lineseparator)."(Time,Name,Text)"
-    );
-
-echo "Loaded a total of $affectedRows records from this csv file.";
-
+      LINES TERMINATED BY ".$pdo->quote($lineseparator)."(Time,Name,Text)");
+      echo "Loaded a total of $affectedRows records from this csv file.\n";
+}
 
 // Procedures wich scoring conversation
 $sql = "CALL transferData();CALL getScore();";
