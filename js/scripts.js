@@ -1,8 +1,15 @@
+// On scroll event minimalize logo and go up button
 $(window).scroll(function(){
     scroll = $(window).scrollTop();
   
-    if (scroll >= 100) $('#headline').addClass('sticky');
-    else $('#headline').removeClass('sticky');
+    if (scroll >= 50) {
+        $('#headline-sticky').animate({opacity: 'show', height: 'show'}, 300);
+        $('.go-up-btn').animate({opacity: 'show', height: 'show'}, 500);
+    }
+    else {
+        $('#headline-sticky').animate({opacity: 'hide', height: 'hide'}, 300);
+        $('.go-up-btn').animate({opacity: 'hide', height: 'hide'}, 500);
+    }
   });
 
 $(function () {
@@ -66,7 +73,7 @@ $(function () {
 function clearIt() {
     $(".container-2").hide();
     $(".container-3").hide();
-    $(".go-up-btn").hide();
+    $(".go-up-btn").fadeOut();
     $.ajax({url: 'php/delete.php', success: function (returnData) {console.log('ok')}});
     initDragzone(); // After click => reload dragzone to initial state
 }
@@ -74,14 +81,14 @@ function clearIt() {
 // Will show the second container and scroll to centre of it
 function scroll2() {
     $('.container-2').show();
-    $('.go-up-btn').show();
+    //$('.go-up-btn').fadeIn();
     $('html,body').animate({ scrollTop: $(".container-2").offset().top + $(".container-2").height() / 2 }, 'slow');
 }
 
 // Will show the third container and scroll to centre of it
 function scroll3() {
     $('.container-3').show();
-    $('.go-up-btn').show();
+    //$('.go-up-btn').fadeIn();
     $('html, body').animate({ scrollTop: $(".container-3").offset().top + $(".container-3").height() / 2 }, 'slow');
 }
 

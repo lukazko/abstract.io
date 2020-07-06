@@ -149,11 +149,12 @@ h1 {
     cursor: pointer;
 }
 
-.sticky {
+#headline-sticky {
     position: fixed;
-    top: 0;
-    width: 100%;
+    top: 0px;
+    width: 200px;
     text-align: left;
     font-size: 20px;
     padding-left: 10px;
+    display: none;
 }
