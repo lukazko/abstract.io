@@ -12,27 +12,30 @@
 </head>
 
 <body>
+
     <div class="container-1">
-        <h1 id="headline"><a href="index.html">Highlight.io</a></h1>
+        <h1 id="headline"><a href="index.html" title="Reload page">Highlight.io</a></h1>
         <!--<h1 id="headline-sticky"><a href="index.html">Highlight.io</a></h1>-->
-        <h1 id="headline-sticky"><a href="index.html"><img src="img/favicon.png" /></a></h1>
+        <h1 id="headline-sticky"><a href="index.html" title="Reload page"><img src="img/favicon.png" /></a></h1>
         <input type="file" name="file" id="file">
 
         <div class="dropzone" id="dropzone">
             <h2>Drag and Drop file with conversation here<br />or<br />Click to select file</h2>
         </div>
 
-        <a href="#" class="btn" id="process-btn" onclick=processFile()>Process</a>
+        <a href="#" class="btn" id="process-btn" onclick=processFile() title="Upload inserted files">Process</a>
         <!-- Testing button for quick debugging -->
         <!--<a class="btn" id="btn" onclick=scroll2()>Scroll</a>-->
-        <a class="btn" id="clear-btn" onclick=clearIt()>Clear</a>
+        <a class="btn" id="clear-btn" onclick=clearIt() title="Reload website, delete all data">Clear</a>
     </div>
+
     <div class="container-2">
         <div class="input-zone">
             Number of highlights <input type="text" id="number-of-results"><br>
-            <a class="btn" id="result-btn" onclick=getResult()>Show highlights</a>
+            <a class="btn" id="result-btn" onclick=getResult() title="Show chosen number of highlights">Show highlights</a>
         </div>
     </div>
+
     <div class="go-up-btn"><a onclick=scrollBack1()>Go up 🡩</a></div>
     <div class="container-3">
         <div class="result-zone">
@@ -43,14 +46,14 @@
                     <th>Message</th>
                 </tr>
             </table><br>
-            <a class="btn" id="delete-btn" onclick=delResult()>Delete highlights</a>
+            <a class="btn" id="delete-btn" onclick=delResult() title="On click will hide highlights">Delete highlights</a>
         </div>
     </div>
 
     <!-- Modal window -->
     <div class="modal-content">
         <div class="modal-header">
-          <span class="close" onclick=closeModal()>&times;</span>
+            <span class="close" onclick=closeModal()>&times;</span>
         </div>
         <div class="modal-body">
             <p class="modal-error">Error</p>

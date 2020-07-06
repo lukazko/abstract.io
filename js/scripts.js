@@ -5,7 +5,7 @@ $(window).scroll(function () {
     // Start of scrolling
     if (scroll >= 50) {
         //$('#headline-sticky').animate({ opacity: 'show', height: 'show' }, 300);
-        $('#headline-sticky').fadeIn(1000).animate({
+        $('#headline-sticky').fadeIn(800).animate({
             'top': '0px'
             }, {duration: 200, queue: false});
         $('.go-up-btn').animate({ opacity: 'show', height: 'show' }, 500);
