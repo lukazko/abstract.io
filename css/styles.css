@@ -1,3 +1,7 @@
+/*-----------*/
+/*  General  */
+/*-----------*/
+
 body {
     text-align: center;
     font-family: sans-serif;
@@ -8,98 +12,33 @@ a {
     color:inherit;
 }
 
-.container-1 {
-    height: 100%;
-}
-
-.container-2 {
-    height: 100vh;
-    display: none;
-}
-
-.container-3 {
-    height: 100vh;
-    display: none;
-}
-
-.dropzone{
-    width: 70%;
-    height: 500px;
-    border: 2px dashed lightgray;
-    border-radius: 10px;
-    margin: 0 auto;
-    margin-top: 50px;
-    text-align: center;
-    overflow: auto;
-}
-
-.dropzone:hover{
-    cursor: pointer;
-    border: 2px dashed rgb(85, 85, 85);
-}
+/*-----------*/
+/* Headlines */
+/*-----------*/
 
 h1 {
     color: #2f4f4f;
 }
 
-.dropzone h2{
-    text-align: center;
-    margin-top: 150px;
-    font-weight: normal;
-    line-height: 50px;
-    color: darkslategray;
-}
-
-#h2-process {
-    text-align: center;
-    margin-top: 210px;
-    font-weight: normal;
-    line-height: 50px;
-    color: darkslategray;
-}
-
-#file{
-    display: none;
-}
-
-.result-zone {
-    margin-top: 50px;
-    height: 350px;
-    text-align: center;
-    padding-top: 15%;
-}
-
-.input-zone {
-    padding-top: 20%;
-}
-
-.result-zone table {
-    margin: 0 auto;
+#headline-sticky {
+    position: fixed;
+    top: -50px;
+    width: 200px;
     text-align: left;
+    font-size: 20px;
+    padding-left: 10px;
     display: none;
 }
 
-.result-zone table th {
-    padding: 5px 20px 5px 20px;
+#headline-sticky img {
+    width: 40px;
+    height: 40px;
 }
 
-.result-zone table .result-row th {
-    font-weight: normal;
-}
+/*-----------------*/
+/*     Buttons     */
+/*-----------------*/
 
-/* Thumbnail of file */
-.thumbnail{
-    width: 80px;
-    height: 80px;
-    padding: 2px;
-    float: left;
-}
-
-.size{
-    font-size:12px;
-}
-
-/* Button which process files */
 .btn {
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
@@ -122,6 +61,86 @@ h1 {
     background-color: #0555b1;
 }
 
+.go-up-btn {
+    position: fixed;
+    text-align: right;
+    display: none;
+    bottom: 0;
+    right: 0;
+    padding-right: 20px;
+    padding-bottom: 20px;
+    cursor: pointer;
+}
+
+/*-----------*/
+/* 1st Page  */
+/*-----------*/
+
+.container-1 {
+    height: 100%;
+}
+
+.dropzone{
+    width: 70%;
+    height: 500px;
+    border: 2px dashed lightgray;
+    border-radius: 10px;
+    margin: 0 auto;
+    margin-top: 50px;
+    text-align: center;
+    overflow: auto;
+}
+
+.dropzone:hover{
+    cursor: pointer;
+    border: 2px dashed rgb(85, 85, 85);
+}
+
+.dropzone h2{
+    text-align: center;
+    margin-top: 150px;
+    font-weight: normal;
+    line-height: 50px;
+    color: darkslategray;
+}
+
+#h2-process {
+    text-align: center;
+    margin-top: 210px;
+    font-weight: normal;
+    line-height: 50px;
+    color: darkslategray;
+}
+
+#file{
+    display: none;
+}
+
+/* Thumbnail of file */
+.thumbnail{
+    width: 80px;
+    height: 80px;
+    padding: 2px;
+    float: left;
+}
+
+.size{
+    font-size:12px;
+}
+
+/*-----------*/
+/* 2nd Page  */
+/*-----------*/
+
+.container-2 {
+    height: 100vh;
+    display: none;
+}
+
+.input-zone {
+    padding-top: 20%;
+}
+
 #number-of-results {
     border-radius: 10px;
     font-size: 20px;
@@ -138,33 +157,40 @@ h1 {
     border: 2px dashed rgb(85, 85, 85);       
 }
 
-.go-up-btn {
-    position: fixed;
-    text-align: right;
+/*-----------*/
+/* 3rd Page  */
+/*-----------*/
+
+.container-3 {
+    height: 100vh;
     display: none;
-    bottom: 0;
-    right: 0;
-    padding-right: 20px;
-    padding-bottom: 20px;
-    cursor: pointer;
 }
 
-#headline-sticky {
-    position: fixed;
-    top: -50px;
-    width: 200px;
+.result-zone {
+    margin-top: 50px;
+    height: 350px;
+    text-align: center;
+    padding-top: 15%;
+}
+
+.result-zone table {
+    margin: 0 auto;
     text-align: left;
-    font-size: 20px;
-    padding-left: 10px;
     display: none;
 }
 
-#headline-sticky img {
-    width: 40px;
-    height: 40px;
+.result-zone table th {
+    padding: 5px 20px 5px 20px;
 }
 
- /* Modal window */
+.result-zone table .result-row th {
+    font-weight: normal;
+}
+
+/*--------------*/
+/* Modal window */
+/*--------------*/
+
 .modal-header {
     text-align: right;
     border-radius: 10px;
