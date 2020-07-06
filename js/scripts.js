@@ -7,7 +7,7 @@ $(window).scroll(function () {
         //$('#headline-sticky').animate({ opacity: 'show', height: 'show' }, 300);
         $('#headline-sticky').fadeIn(800).animate({
             'top': '0px'
-            }, {duration: 200, queue: false});
+        }, { duration: 200, queue: false });
         $('.go-up-btn').animate({ opacity: 'show', height: 'show' }, 500);
     }
 
@@ -16,7 +16,7 @@ $(window).scroll(function () {
         //$('#headline-sticky').animate({ opacity: 'hide', height: 'hide' }, 300);
         $('#headline-sticky').fadeOut(300).animate({
             'top': '-50px'
-            }, {duration: 300, queue: false});
+        }, { duration: 300, queue: false });
         $('.go-up-btn').animate({ opacity: 'hide', height: 'hide' }, 500);
     }
 });
@@ -80,7 +80,7 @@ $(function () {
 
 // Will close modal window  
 function closeModal() {
-    $(".container-1").css("filter","blur(0px)"); // Discart blur of background
+    $(".container-1").css("filter", "blur(0px)"); // Discart blur of background
     $('.modal-content').fadeOut(200); // and fade out modal window
 };
 
@@ -173,7 +173,7 @@ function processFile() {
     }
 
     else {
-        $(".container-1").css("filter","blur(5px)"); // Blur background
+        $(".container-1").css("filter", "blur(5px)"); // Blur background
         $(".modal-error-message").text("Firstly you have to upload some file."); // Add error message into modal window textfield
         $(".modal-content").fadeIn(200); // Show modal window
     }
