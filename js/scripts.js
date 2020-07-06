@@ -1,13 +1,22 @@
-// On scroll event minimalize logo and go up button
+// On scroll event minimalize logo and show go up button
 $(window).scroll(function () {
     scroll = $(window).scrollTop();
 
+    // Start of scrolling
     if (scroll >= 50) {
-        $('#headline-sticky').animate({ opacity: 'show', height: 'show' }, 300);
+        //$('#headline-sticky').animate({ opacity: 'show', height: 'show' }, 300);
+        $('#headline-sticky').fadeIn(1000).animate({
+            'top': '0px'
+            }, {duration: 200, queue: false});
         $('.go-up-btn').animate({ opacity: 'show', height: 'show' }, 500);
     }
+
+    // Back to the top
     else {
-        $('#headline-sticky').animate({ opacity: 'hide', height: 'hide' }, 300);
+        //$('#headline-sticky').animate({ opacity: 'hide', height: 'hide' }, 300);
+        $('#headline-sticky').fadeOut(300).animate({
+            'top': '-50px'
+            }, {duration: 300, queue: false});
         $('.go-up-btn').animate({ opacity: 'hide', height: 'hide' }, 500);
     }
 });
@@ -68,7 +77,6 @@ $(function () {
         uploadData(fd);
     });
 });
-
 
 // Will close modal window  
 function closeModal() {
