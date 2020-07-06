@@ -1,16 +1,16 @@
 // On scroll event minimalize logo and go up button
-$(window).scroll(function(){
+$(window).scroll(function () {
     scroll = $(window).scrollTop();
-  
+
     if (scroll >= 50) {
-        $('#headline-sticky').animate({opacity: 'show', height: 'show'}, 300);
-        $('.go-up-btn').animate({opacity: 'show', height: 'show'}, 500);
+        $('#headline-sticky').animate({ opacity: 'show', height: 'show' }, 300);
+        $('.go-up-btn').animate({ opacity: 'show', height: 'show' }, 500);
     }
     else {
-        $('#headline-sticky').animate({opacity: 'hide', height: 'hide'}, 300);
-        $('.go-up-btn').animate({opacity: 'hide', height: 'hide'}, 500);
+        $('#headline-sticky').animate({ opacity: 'hide', height: 'hide' }, 300);
+        $('.go-up-btn').animate({ opacity: 'hide', height: 'hide' }, 500);
     }
-  });
+});
 
 $(function () {
 
@@ -74,7 +74,7 @@ function clearIt() {
     $(".container-2").hide();
     $(".container-3").hide();
     $(".go-up-btn").fadeOut();
-    $.ajax({url: 'php/delete.php', success: function (returnData) {console.log('ok')}});
+    $.ajax({ url: 'php/delete.php', success: function (returnData) { console.log('ok') } });
     initDragzone(); // After click => reload dragzone to initial state
 }
 
@@ -152,7 +152,7 @@ function convertSize(size) {
 function processFile() {
     if ($(".thumbnail").length > 0) {
         // Importing data from files to csv
-        $.ajax({url: 'php/insert.php', success: function (returnData) {console.log('ok')}});
+        $.ajax({ url: 'php/insert.php', success: function (returnData) { console.log('ok') } });
         scroll2(); // One-page version       
         initDragzone(); // After click => reload dragzone to initial state
     }
