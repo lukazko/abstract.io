@@ -69,6 +69,13 @@ $(function () {
     });
 });
 
+
+// Will close modal window  
+function closeModal() {
+    $(".container-1").css("filter","blur(0px)"); // Discart blur of background
+    $('.modal-content').fadeOut(200); // and fade out modal window
+};
+
 // Hide everything except the start screen
 function clearIt() {
     $(".container-2").hide();
@@ -158,7 +165,9 @@ function processFile() {
     }
 
     else {
-        alert("You have to upload file firstly");
+        $(".container-1").css("filter","blur(5px)"); // Blur background
+        $(".modal-error-message").text("Firstly you have to upload some file."); // Add error message into modal window textfield
+        $(".modal-content").fadeIn(200); // Show modal window
     }
 }
 

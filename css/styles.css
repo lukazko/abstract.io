@@ -163,3 +163,52 @@ h1 {
     width: 40px;
     height: 40px;
 }
+
+ /* Modal window */
+ .modal-header {
+    background-color: #cc3939;
+    text-align: right;
+    border-radius: 10px;
+}
+
+.modal-header span {
+    padding-right: 10px;
+    font-size: 40px;
+}
+
+.modal-header span:hover {
+    cursor: pointer;
+}
+  
+  /* Modal Body */
+  .modal-body {padding: 0;}
+  
+  /* Modal Content */
+  .modal-content {
+    display: none;
+    position: fixed;
+    background-color: #cc3939;
+    border: 1px solid #cc3939;
+    border-radius: 10px;
+    width: 40%;
+    box-shadow: 8px 4px 8px 8px rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    top: 30%;
+    left: 30%;
+    color: white;
+  }
+
+ .modal-body img {
+    width: 50px;
+    height: 50px;
+}
+
+.modal-error {
+    font-size: 30px;
+    margin: 0px;
+}
+
+.modal-error-message {
+    margin: 10px;
+    margin-bottom: 40px;
+}
+  
