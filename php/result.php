@@ -9,7 +9,7 @@ $dbName = 'highlights';
 $pdo = new PDO("mysql:host=$dbServer;dbname=$dbName", $dbUser, $dbPassword);
 
 // Default value of LIMIT
-$lim = $_GET['lim'] ?: 1;
+$lim = $_GET['lim'] ?: 3;
 
 // SQL query that we will be running.
 $sql = "SELECT `Time`, `Name`, `Text` FROM `result` ORDER BY `Rating` DESC LIMIT $lim";

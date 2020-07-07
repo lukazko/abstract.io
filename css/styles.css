@@ -170,6 +170,10 @@ h1 {
     border: 2px dashed rgb(85, 85, 85);       
 }
 
+input:focus::placeholder {
+    color: transparent;
+  }
+
 /*-----------*/
 /* 3rd Page  */
 /*-----------*/
