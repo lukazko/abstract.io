@@ -12,6 +12,10 @@ a {
     color:inherit;
 }
 
+.blur-active {
+    filter: blur(5px);
+}
+
 /*-----------*/
 /* Headlines */
 /*-----------*/
@@ -35,7 +39,7 @@ h1 {
     height: 40px;
 }
 
-#headline-sticky img:hover {
+#headline-sticky a img:hover {
     width: 43px;
     height: 43px;
 }

@@ -5,7 +5,7 @@ $(window).scroll(function () {
     // Start of scrolling
     if (scroll >= 50) {
         //$('#headline-sticky').animate({ opacity: 'show', height: 'show' }, 300);
-        $('#headline-sticky').fadeIn(800).animate({
+         $('#headline-sticky').fadeIn(900).animate({
             'top': '0px'
         }, { duration: 200, queue: false });
         $('.go-up-btn').animate({ opacity: 'show', height: 'show' }, 500);
@@ -80,7 +80,7 @@ $(function () {
 
 // Will close modal window  
 function closeModal() {
-    $(".to-blur").css("filter", "blur(0px)"); // Discart blur of background
+    $(".to-blur").removeClass("blur-active"); // Discart blur of background
     $('.modal-content').fadeOut(200); // and fade out modal window
 };
 
@@ -173,7 +173,7 @@ function processFile() {
     }
 
     else {
-        $(".to-blur").css("filter", "blur(5px)"); // Blur background
+        $(".to-blur").addClass("blur-active"); // Blur background
         $(".modal-error-message").text("Firstly you have to upload some file."); // Add error message into modal window textfield
         $(".modal-content").fadeIn(200); // Show modal window
     }
@@ -206,7 +206,7 @@ function getResult() {
 
             // Empty table protection
             if (results.length == 0) {
-                $(".to-blur").css("filter", "blur(5px)"); // Blur background
+                $(".to-blur").addClass("blur-active"); // Blur background
                 $(".modal-error-message").text("No results were found. Upload another file."); // Add error message into modal window textfield
                 $(".modal-content").fadeIn(200); // Show modal window
             }
