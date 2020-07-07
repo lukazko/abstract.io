@@ -81,6 +81,10 @@ h1 {
     font-size: 17px;   
 }
 
+#delete-btn {
+    padding-bottom: 20px;
+}
+
 /*-----------*/
 /* 1st Page  */
 /*-----------*/
@@ -176,15 +180,15 @@ h1 {
 }
 
 .result-zone {
-    margin-top: 50px;
-    height: 350px;
+    /*margin-top: 50px;*/
+    /*height: 350px;*/
     text-align: center;
-    padding-top: 15%;
+    padding-top: 10%;
 }
 
 .result-zone table {
     margin: 0 auto;
-    text-align: left;
+    text-align: center;
     display: none;
 }
 
@@ -194,6 +198,20 @@ h1 {
 
 .result-zone table .result-row th {
     font-weight: normal;
+    /*text-align: center;*/
+}
+
+.result-table img {
+    width: 55px;
+    height: 55px;
+}
+
+.message-cell {
+    text-align: left;
+}
+
+.time-cell {
+    font-style: italic;
 }
 
 /*--------------*/

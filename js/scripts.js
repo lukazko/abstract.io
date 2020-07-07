@@ -207,8 +207,8 @@ function getResult() {
             // for each result create table row
             $.each(results, function (key, value) {
                 $('.result-table').append('<tr class="result-row" id="result-row-' + key + '">');
+                $('#result-row-' + key).append('<th class="author-cell"><img src="img/avatar.png"/><br>' + value.Name + '</th>');
                 $('#result-row-' + key).append('<th class="time-cell">' + value.Time + '</th>');
-                $('#result-row-' + key).append('<th class="author-cell">' + value.Name + '</th>');
                 $('#result-row-' + key).append('<th class="message-cell">' + value.Text + '</th>');
                 $('.result-table').append('</tr>');
             });
