@@ -12,9 +12,9 @@
 </head>
 
 <body>
-    <h1 id="headline-sticky"><a href="index.html" title="Reload page"><img src="img/favicon.png" /></a></h1>
+    <h1 id="headline-sticky" class="to-blur"><a href="index.html" title="Reload page"><img src="img/favicon.png" /></a></h1>
 
-    <div class="container-1">
+    <div class="container to-blur" id="container-1">
         <h1 id="headline"><a href="index.html" title="Reload page">Highlight.io</a></h1>
         <!--<h1 id="headline-sticky"><a href="index.html">Highlight.io</a></h1>-->
         <input type="file" name="file" id="file">
@@ -28,7 +28,7 @@
         <a class="btn" id="clear-btn" onclick=clearIt() title="Reload website, delete all data">Clear</a>
     </div>
 
-    <div class="container-2">
+    <div class="container to-blur" id="container-2">
         <div class="input-zone">
             Number of highlights <input type="text" id="number-of-results" placeholder="3"><br>
             <a class="btn" id="result-btn" onclick=getResult() title="Show chosen number of highlights">Show
@@ -36,8 +36,9 @@
         </div>
     </div>
 
-    <div class="go-up-btn"><a onclick=scrollBack1()>Go up 🡩</a></div>
-    <div class="container-3">
+    <div class="go-up-btn to-blur"><a onclick=scrollBack1()>Go up 🡩</a></div>
+
+    <div class="container to-blur" id="container-3">
         <div class="result-zone">
             <table class="result-table">
                 <!--<tr>

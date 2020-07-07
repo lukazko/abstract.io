@@ -80,14 +80,14 @@ $(function () {
 
 // Will close modal window  
 function closeModal() {
-    $(".container-1").css("filter", "blur(0px)"); // Discart blur of background
+    $(".to-blur").css("filter", "blur(0px)"); // Discart blur of background
     $('.modal-content').fadeOut(200); // and fade out modal window
 };
 
 // Hide everything except the start screen
 function clearIt() {
-    $(".container-2").hide();
-    $(".container-3").hide();
+    $("#container-2").hide();
+    $("#container-3").hide();
     $(".go-up-btn").fadeOut();
     $.ajax({ url: 'php/delete.php', success: function (returnData) { console.log('ok') } });
     initDragzone(); // After click => reload dragzone to initial state
@@ -95,26 +95,26 @@ function clearIt() {
 
 // Will show the second container and scroll to centre of it
 function scroll2() {
-    $('.container-2').show();
+    $('#container-2').show();
     //$('.go-up-btn').fadeIn();
-    $('html,body').animate({ scrollTop: $(".container-2").offset().top + $(".container-2").height() / 2 }, 'slow');
+    $('html,body').animate({ scrollTop: $("#container-2").offset().top + $("#container-2").height() / 2 }, 'slow');
 }
 
 // Will show the third container and scroll to centre of it
 function scroll3() {
-    $('.container-3').show();
+    $('#container-3').show();
     //$('.go-up-btn').fadeIn();
-    $('html, body').animate({ scrollTop: $(".container-3").offset().top + $(".container-3").height() / 2 }, 'slow');
+    $('html, body').animate({ scrollTop: $("#container-3").offset().top + $("#container-3").height() / 2 }, 'slow');
 }
 
 // Will scroll back up to input-zone
 function scrollBack2() {
-    $('html,body').animate({ scrollTop: $(".container-2").offset().top + 2 }, 'slow');
+    $('html,body').animate({ scrollTop: $("#container-2").offset().top + 2 }, 'slow');
 }
 
 // Will scroll back up to start screen
 function scrollBack1() {
-    $('html,body').animate({ scrollTop: $(".container-1").offset().top - 50 }, 'slow');
+    $('html,body').animate({ scrollTop: $("#container-1").offset().top - 50 }, 'slow');
     //$('.go-up-btn').hide();
 }
 
@@ -173,7 +173,7 @@ function processFile() {
     }
 
     else {
-        $(".container-1").css("filter", "blur(5px)"); // Blur background
+        $(".to-blur").css("filter", "blur(5px)"); // Blur background
         $(".modal-error-message").text("Firstly you have to upload some file."); // Add error message into modal window textfield
         $(".modal-content").fadeIn(200); // Show modal window
     }
@@ -204,25 +204,28 @@ function getResult() {
 
             var results = JSON.parse(returnData); // Parse the JSON from result.php
 
-            // for each result create table row
-            $.each(results, function (key, value) {
-                $('.result-table').append('<tr class="result-row" id="result-row-' + key + '">');
-                $('#result-row-' + key).append('<th class="author-cell"><img src="img/avatar.png" title="' + value.Time + '"/><br>' + value.Name + '</th>');
-                //$('#result-row-' + key).append('<th class="time-cell">' + value.Time + '</th>');
-                $('#result-row-' + key).append('<th class="message-cell">' + value.Text + '</th>');
-                $('.result-table').append('</tr>');
-            });
-
             // Empty table protection
             if (results.length == 0) {
-                $('.result-zone').append('<p>No results were found!</p>'); // add error message
+                $(".to-blur").css("filter", "blur(5px)"); // Blur background
+                $(".modal-error-message").text("No results were found. Upload another file."); // Add error message into modal window textfield
+                $(".modal-content").fadeIn(200); // Show modal window
             }
 
-            $(".result-zone table").show(); // show generated table
-            $(".container-3").show();
-            $("#change-btn").show();
-            scroll3(); // scroll to generated table
-            $("#number-of-results").val('');
+            else {
+                // for each result create table row
+                $.each(results, function (key, value) {
+                    $('.result-table').append('<tr class="result-row" id="result-row-' + key + '">');
+                    $('#result-row-' + key).append('<th class="author-cell"><img src="img/avatar.png" title="' + value.Time + '"/><br>' + value.Name + '</th>');
+                    //$('#result-row-' + key).append('<th class="time-cell">' + value.Time + '</th>');
+                    $('#result-row-' + key).append('<th class="message-cell">' + value.Text + '</th>');
+                    $('.result-table').append('</tr>');
+                });
+                $(".result-zone table").show(); // show generated table
+                $("#container-3").show();
+                $("#change-btn").show();
+                scroll3(); // scroll to generated table
+                $("#number-of-results").val('');
+            }
         }
     });
 }
