@@ -220,18 +220,19 @@ function getResult() {
 
             $(".result-zone table").show(); // show generated table
             $(".container-3").show();
-            $("#delete-btn").show();
+            $("#change-btn").show();
             scroll3(); // scroll to generated table
             $("#number-of-results").val('');
         }
     });
 }
 
+// Change to "change number"
 // Function for deleting of all result rows
 function delResult() {
-    scrollBack2();
     $(".result-row").remove();
     $(".result-zone p").remove();
     $(".result-zone table").hide();
-    $("#delete-btn").hide();
+    $("#change-btn").hide();
+    //$(".container-3").hide();
 }
