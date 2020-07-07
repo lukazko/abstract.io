@@ -35,6 +35,11 @@ h1 {
     height: 40px;
 }
 
+#headline-sticky img:hover {
+    width: 43px;
+    height: 43px;
+}
+
 /*-----------------*/
 /*     Buttons     */
 /*-----------------*/
@@ -70,6 +75,10 @@ h1 {
     padding-right: 20px;
     padding-bottom: 20px;
     cursor: pointer;
+}
+
+.go-up-btn:hover {
+    font-size: 17px;   
 }
 
 /*-----------*/
