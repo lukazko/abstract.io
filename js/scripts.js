@@ -215,7 +215,7 @@ function getResult() {
 
             // Empty table protection
             if (results.length == 0) {
-                $('.result-zone').append('<p>No results were found!</p>');
+                $('.result-zone').append('<p>No results were found!</p>'); // add error message
             }
 
             $(".result-zone table").show(); // show generated table
