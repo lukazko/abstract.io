@@ -208,6 +208,7 @@ h1 {
 
 .message-cell {
     text-align: left;
+    max-width: 500px;
 }
 
 .time-cell {
