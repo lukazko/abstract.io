@@ -235,5 +235,3 @@ function delResult() {
     $(".result-zone table").hide();
     $("#delete-btn").hide();
 }
-
-
