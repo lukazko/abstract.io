@@ -27,7 +27,7 @@ $(function () {
     $("html").on("dragover", function (e) {
         e.preventDefault();
         e.stopPropagation();
-        $("h2").text("Drag here");
+        $(".dropzone h2").text("Drag here");
     });
 
     $("html").on("drop", function (e) { e.preventDefault(); e.stopPropagation(); });
@@ -36,14 +36,14 @@ $(function () {
     $('.dropzone').on('dragenter', function (e) {
         e.stopPropagation();
         e.preventDefault();
-        $("h2").text("Drop");
+        $(".dropzone h2").text("Drop");
     });
 
     // Drag over
     $('.dropzone').on('dragover', function (e) {
         e.stopPropagation();
         e.preventDefault();
-        $("h2").text("Drop");
+        $(".dropzone h2").text("Drop");
     });
 
     // Drop
@@ -51,7 +51,7 @@ $(function () {
         e.stopPropagation();
         e.preventDefault();
 
-        $("h2").text("Upload");
+        $(".dropzone h2").text("Upload");
 
         var file = e.originalEvent.dataTransfer.files;
         var fd = new FormData();
@@ -234,6 +234,7 @@ function delResult() {
     $("#change-btn").hide();
 }
 
+// General function to generate modal window with error 
 function errorMsg(text) {
     $(".to-blur").addClass("blur-active"); // Blur background
     $(".modal-error-message").text(text); // Add error message into modal window textfield
