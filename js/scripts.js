@@ -129,7 +129,14 @@ function uploadData(formdata) {
         processData: false,
         dataType: 'json',
         success: function (response) {
-            addThumbnail(response);
+            // If uploaded file is csv add thumbnail to dropzone
+            if (response != 0) {
+                addThumbnail(response);
+            }
+            // If uploaded file isn't csv print error
+            else {
+                errorMsg("You can only upload csv files.");    
+            }
         }
     });
 }
