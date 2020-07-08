@@ -188,7 +188,7 @@ function initDragzone() {
     // Reload dragzone to initial state
     $(".thumbnail").remove();
     $("#dropzone h2").remove();
-    $("#dropzone").append('<h2>Drag and Drop file with conversation here<br />or<br />Click to select file</h2>');
+    $("#dropzone").append('<h2>Drag and Drop csv file with conversation here<br />or<br />Click to select file</h2>');
 }
 
 // Function for generation of result rows
