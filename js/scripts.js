@@ -173,9 +173,7 @@ function processFile() {
     }
 
     else {
-        $(".to-blur").addClass("blur-active"); // Blur background
-        $(".modal-error-message").text("Firstly you have to upload some file."); // Add error message into modal window textfield
-        $(".modal-content").fadeIn(200); // Show modal window
+        errorMsg("Firstly you have to upload some file.");
     }
 }
 
@@ -206,9 +204,7 @@ function getResult() {
 
             // Empty table protection
             if (results.length == 0) {
-                $(".to-blur").addClass("blur-active"); // Blur background
-                $(".modal-error-message").text("No results were found. Upload another file."); // Add error message into modal window textfield
-                $(".modal-content").fadeIn(200); // Show modal window
+                errorMsg("No results were found. Upload another file.");
             }
 
             else {
@@ -230,12 +226,16 @@ function getResult() {
     });
 }
 
-// Change to "change number"
 // Function for deleting of all result rows
 function delResult() {
     $(".result-row").remove();
     $(".result-zone p").remove();
     $(".result-zone table").hide();
     $("#change-btn").hide();
-    //$(".container-3").hide();
+}
+
+function errorMsg(text) {
+    $(".to-blur").addClass("blur-active"); // Blur background
+    $(".modal-error-message").text(text); // Add error message into modal window textfield
+    $(".modal-content").fadeIn(200); // Show modal window
 }
