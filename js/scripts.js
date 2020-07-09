@@ -23,19 +23,26 @@ $(window).scroll(function () {
 
 $(function () {
 
-    // preventing page from redirecting on drop and dragover
+    // preventing page from redirecting on dragover
     $("html").on("dragover", function (e) {
         e.preventDefault();
         e.stopPropagation();
     });
 
+    // preventing page from redirecting on drop and error message about that
     $("html").on("drop", function (e) { 
         e.preventDefault(); 
         e.stopPropagation(); 
-        //$("#dropzone h2").remove();
-        errorMsg("You must drag the file into the marked area");
-        $(".dropzone h2").text("Drag and Drop csv file with conversation here\nor\nClick to select file");
-        $('.dropzone h2').html(escaped.replace(/\n/g, '<br />'));
+        errorMsg("You must drag the file into the marked area."); // Error message if file is dropped outside of marked area
+        
+        // If it was the first uploaded file reload dropzone text to initial text
+        if ($(".thumbnail").length <= 0) {
+            $(".dropzone h2").text("Drag and Drop csv file with conversation here\nor\nClick to select file");
+        }
+        // On the other hand "lets continue" text
+        else {
+            $(".dropzone h2").text("Now click on process or add more files");
+        }
     });
 
     // Drag enter

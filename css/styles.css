@@ -123,6 +123,7 @@ h1 {
     font-weight: normal;
     line-height: 50px;
     color: darkslategray;
+    white-space: pre-wrap;
 }
 
 #h2-process {
