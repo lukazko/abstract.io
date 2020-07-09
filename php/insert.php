@@ -36,7 +36,7 @@ foreach($csvfiles as $file){
       echo "Loaded a total of $affectedRows records from this csv file.\n"; // Log about number of processed rows
 }
 
-// Procedures wich scoring conversation
+// Procedures which scoring conversation aka db back-end
 $sql = "CALL transferData();CALL getScore();";
 $statement = $pdo->prepare($sql);
 $statement->execute();

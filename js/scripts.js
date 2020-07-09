@@ -5,7 +5,7 @@ $(window).scroll(function () {
     // Start of scrolling
     if (scroll >= 50) {
         //$('#headline-sticky').animate({ opacity: 'show', height: 'show' }, 300);
-        $('#headline-sticky').fadeIn(800).animate({
+         $('#headline-sticky').fadeIn(900).animate({
             'top': '0px'
         }, { duration: 200, queue: false });
         $('.go-up-btn').animate({ opacity: 'show', height: 'show' }, 500);
@@ -23,35 +23,60 @@ $(window).scroll(function () {
 
 $(function () {
 
-    // preventing page from redirecting
+    // preventing page from redirecting on dragover
     $("html").on("dragover", function (e) {
         e.preventDefault();
         e.stopPropagation();
-        $("h2").text("Drag here");
     });
 
-    $("html").on("drop", function (e) { e.preventDefault(); e.stopPropagation(); });
+    // preventing page from redirecting on drop and error message about that
+    $("html").on("drop", function (e) { 
+        e.preventDefault(); 
+        e.stopPropagation(); 
+        errorMsg("You must drag the file into the marked area."); // Error message if file is dropped outside of marked area
+        
+        // If it was the first uploaded file reload dropzone text to initial text
+        if ($(".thumbnail").length <= 0) {
+            $(".dropzone h2").text("Drag and Drop csv file with conversation here\nor\nClick to select file");
+        }
+        // On the other hand "lets continue" text
+        else {
+            $(".dropzone h2").text("Now click on process or add more files");
+        }
+    });
 
     // Drag enter
     $('.dropzone').on('dragenter', function (e) {
         e.stopPropagation();
         e.preventDefault();
-        $("h2").text("Drop");
+        $(".dropzone h2").text("Drop");
     });
 
     // Drag over
     $('.dropzone').on('dragover', function (e) {
         e.stopPropagation();
         e.preventDefault();
-        $("h2").text("Drop");
+        $(".dropzone h2").text("Drop");
+    });
+
+    // Drag outside of dropzone area
+    $('.dropzone').on('dragleave', function (e) {
+        e.stopPropagation();
+        e.preventDefault();
+        $(".dropzone h2").text("Drag here");
+    });
+
+    // Drag end
+    $('.dropzone').on('dragend', function (e) {
+        e.stopPropagation();
+        e.preventDefault();
+        $(".dropzone h2").text("End");
     });
 
     // Drop
     $('.dropzone').on('drop', function (e) {
         e.stopPropagation();
         e.preventDefault();
-
-        $("h2").text("Upload");
 
         var file = e.originalEvent.dataTransfer.files;
         var fd = new FormData();
@@ -80,14 +105,14 @@ $(function () {
 
 // Will close modal window  
 function closeModal() {
-    $(".container-1").css("filter", "blur(0px)"); // Discart blur of background
+    $(".to-blur").removeClass("blur-active"); // Discart blur of background
     $('.modal-content').fadeOut(200); // and fade out modal window
 };
 
 // Hide everything except the start screen
 function clearIt() {
-    $(".container-2").hide();
-    $(".container-3").hide();
+    $("#container-2").hide();
+    $("#container-3").hide();
     $(".go-up-btn").fadeOut();
     $.ajax({ url: 'php/delete.php', success: function (returnData) { console.log('ok') } });
     initDragzone(); // After click => reload dragzone to initial state
@@ -95,26 +120,26 @@ function clearIt() {
 
 // Will show the second container and scroll to centre of it
 function scroll2() {
-    $('.container-2').show();
+    $('#container-2').show();
     //$('.go-up-btn').fadeIn();
-    $('html,body').animate({ scrollTop: $(".container-2").offset().top + $(".container-2").height() / 2 }, 'slow');
+    $('html,body').animate({ scrollTop: $("#container-2").offset().top + $("#container-2").height() / 2 }, 'slow');
 }
 
 // Will show the third container and scroll to centre of it
 function scroll3() {
-    $('.container-3').show();
+    $('#container-3').show();
     //$('.go-up-btn').fadeIn();
-    $('html, body').animate({ scrollTop: $(".container-3").offset().top + $(".container-3").height() / 2 }, 'slow');
+    $('html, body').animate({ scrollTop: $("#container-3").offset().top + $("#container-3").height() / 2 }, 'slow');
 }
 
 // Will scroll back up to input-zone
 function scrollBack2() {
-    $('html,body').animate({ scrollTop: $(".container-2").offset().top + 2 }, 'slow');
+    $('html,body').animate({ scrollTop: $("#container-2").offset().top + 2 }, 'slow');
 }
 
 // Will scroll back up to start screen
 function scrollBack1() {
-    $('html,body').animate({ scrollTop: $(".container-1").offset().top - 50 }, 'slow');
+    $('html,body').animate({ scrollTop: $("#container-1").offset().top - 50 }, 'slow');
     //$('.go-up-btn').hide();
 }
 
@@ -129,7 +154,14 @@ function uploadData(formdata) {
         processData: false,
         dataType: 'json',
         success: function (response) {
-            addThumbnail(response);
+            // If uploaded file is csv add thumbnail to dropzone
+            if (response != 0) {
+                addThumbnail(response);
+            }
+            // If uploaded file isn't csv print error
+            else {
+                errorMsg("You can only upload csv files.");    
+            }
         }
     });
 }
@@ -173,9 +205,7 @@ function processFile() {
     }
 
     else {
-        $(".container-1").css("filter", "blur(5px)"); // Blur background
-        $(".modal-error-message").text("Firstly you have to upload some file."); // Add error message into modal window textfield
-        $(".modal-content").fadeIn(200); // Show modal window
+        errorMsg("Firstly you have to upload some file.");
     }
 }
 
@@ -183,7 +213,7 @@ function initDragzone() {
     // Reload dragzone to initial state
     $(".thumbnail").remove();
     $("#dropzone h2").remove();
-    $("#dropzone").append('<h2>Drag and Drop file with conversation here<br />or<br />Click to select file</h2>');
+    $("#dropzone").append('<h2>Drag and Drop csv file with conversation here<br />or<br />Click to select file</h2>');
 }
 
 // Function for generation of result rows
@@ -204,36 +234,41 @@ function getResult() {
 
             var results = JSON.parse(returnData); // Parse the JSON from result.php
 
-            // for each result create table row
-            $.each(results, function (key, value) {
-                $('.result-table').append('<tr class="result-row" id="result-row-' + key + '">');
-                $('#result-row-' + key).append('<th class="time-cell">' + value.Time + '</th>');
-                $('#result-row-' + key).append('<th class="author-cell">' + value.Name + '</th>');
-                $('#result-row-' + key).append('<th class="message-cell">' + value.Text + '</th>');
-                $('.result-table').append('</tr>');
-            });
-
             // Empty table protection
             if (results.length == 0) {
-                $('.result-zone').append('<p>No results were found!</p>');
+                errorMsg("No results were found. Upload another file.");
             }
 
-            $(".result-zone table").show(); // show generated table
-            $(".container-3").show();
-            $("#delete-btn").show();
-            scroll3(); // scroll to generated table
-            $("#number-of-results").val('');
+            else {
+                // for each result create table row
+                $.each(results, function (key, value) {
+                    $('.result-table').append('<tr class="result-row" id="result-row-' + key + '">');
+                    $('#result-row-' + key).append('<th class="author-cell"><img src="img/avatar.png" title="' + value.Time + '"/><br>' + value.Name + '</th>');
+                    //$('#result-row-' + key).append('<th class="time-cell">' + value.Time + '</th>');
+                    $('#result-row-' + key).append('<th class="message-cell">' + value.Text + '</th>');
+                    $('.result-table').append('</tr>');
+                });
+                $(".result-zone table").show(); // show generated table
+                $("#container-3").show();
+                $("#change-btn").show();
+                scroll3(); // scroll to generated table
+                $("#number-of-results").val('');
+            }
         }
     });
 }
 
 // Function for deleting of all result rows
 function delResult() {
-    scrollBack2();
     $(".result-row").remove();
     $(".result-zone p").remove();
     $(".result-zone table").hide();
-    $("#delete-btn").hide();
+    $("#change-btn").hide();
 }
 
-
+// General function to generate modal window with error 
+function errorMsg(text) {
+    $(".to-blur").addClass("blur-active"); // Blur background
+    $(".modal-error-message").text(text); // Add error message into modal window textfield
+    $(".modal-content").fadeIn(200); // Show modal window
+}

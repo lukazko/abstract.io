@@ -9,7 +9,7 @@ $dbName = 'highlights';
 $pdo = new PDO("mysql:host=$dbServer;dbname=$dbName", $dbUser, $dbPassword);
 
 // Default value of LIMIT
-$lim = $_GET['lim'] ?: 1;
+$lim = $_GET['lim'] ?: 3;
 
 // SQL query that we will be running.
 $sql = "SELECT `Time`, `Name`, `Text` FROM `result` ORDER BY `Rating` DESC LIMIT $lim";
@@ -22,6 +22,15 @@ $statement->execute();
 
 // Fetch result as an associative array.
 $results = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+// Comparing times in array and sort from oldest to newest
+function date_compare($a, $b)
+{
+    $t1 = strtotime($a['Time']);
+    $t2 = strtotime($b['Time']);
+    return $t1 - $t2;
+}    
+usort($results, 'date_compare');
 
 // Echo the $results array in a JSON format
 echo json_encode($results);

@@ -12,6 +12,10 @@ a {
     color:inherit;
 }
 
+.blur-active {
+    filter: blur(5px);
+}
+
 /*-----------*/
 /* Headlines */
 /*-----------*/
@@ -33,6 +37,11 @@ h1 {
 #headline-sticky img {
     width: 40px;
     height: 40px;
+}
+
+#headline-sticky a img:hover {
+    width: 43px;
+    height: 43px;
 }
 
 /*-----------------*/
@@ -72,11 +81,23 @@ h1 {
     cursor: pointer;
 }
 
+.go-up-btn:hover {
+    font-size: 17px;   
+}
+
+#change-btn {
+    margin-bottom: 5%;
+}
+
+.container {
+    height: 100vh;
+}
+
 /*-----------*/
 /* 1st Page  */
 /*-----------*/
 
-.container-1 {
+#container-1 {
     height: 100%;
 }
 
@@ -102,6 +123,7 @@ h1 {
     font-weight: normal;
     line-height: 50px;
     color: darkslategray;
+    white-space: pre-wrap;
 }
 
 #h2-process {
@@ -132,8 +154,7 @@ h1 {
 /* 2nd Page  */
 /*-----------*/
 
-.container-2 {
-    height: 100vh;
+#container-2 {
     display: none;
 }
 
@@ -157,25 +178,28 @@ h1 {
     border: 2px dashed rgb(85, 85, 85);       
 }
 
+input:focus::placeholder {
+    color: transparent;
+  }
+
 /*-----------*/
 /* 3rd Page  */
 /*-----------*/
 
-.container-3 {
-    height: 100vh;
+#container-3 {
     display: none;
 }
 
 .result-zone {
-    margin-top: 50px;
-    height: 350px;
+    /*margin-top: 50px;*/
+    /*height: 350px;*/
     text-align: center;
-    padding-top: 15%;
+    padding-top: 10%;
 }
 
 .result-zone table {
     margin: 0 auto;
-    text-align: left;
+    text-align: center;
     display: none;
 }
 
@@ -185,6 +209,22 @@ h1 {
 
 .result-zone table .result-row th {
     font-weight: normal;
+    /*text-align: center;*/
+}
+
+.result-table img {
+    width: 55px;
+    height: 55px;
+}
+
+.message-cell {
+    text-align: left;
+    max-width: 500px;
+}
+
+.time-cell {
+    font-style: italic;
+    font-size: 10px;
 }
 
 /*--------------*/
@@ -216,7 +256,7 @@ h1 {
     border: 1px solid #cc3939;
     border-radius: 10px;
     width: 40%;
-    box-shadow: 8px 4px 8px 8px rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    box-shadow: 4px 2px 4px 2px rgba(0,0,0,0.2);
     top: 30%;
     left: 30%;
     color: white;
