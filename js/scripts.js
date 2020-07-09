@@ -45,6 +45,21 @@ $(function () {
         }
     });
 
+    // Drag outside of site
+    $('html').on('dragleave', function (e) {
+        e.stopPropagation();
+        e.preventDefault();
+        
+        // If it was the first uploaded file reload dropzone text to initial text
+        if ($(".thumbnail").length <= 0) {
+            $(".dropzone h2").text("Drag and Drop csv file with conversation here\nor\nClick to select file");
+        }
+        // On the other hand "lets continue" text
+        else {
+            $(".dropzone h2").text("Now click on process or add more files");
+        }
+    });
+
     // Drag enter
     $('.dropzone').on('dragenter', function (e) {
         e.stopPropagation();
@@ -64,13 +79,6 @@ $(function () {
         e.stopPropagation();
         e.preventDefault();
         $(".dropzone h2").text("Drag here");
-    });
-
-    // Drag end
-    $('.dropzone').on('dragend', function (e) {
-        e.stopPropagation();
-        e.preventDefault();
-        $(".dropzone h2").text("End");
     });
 
     // Drop
