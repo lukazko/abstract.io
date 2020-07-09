@@ -23,14 +23,20 @@ $(window).scroll(function () {
 
 $(function () {
 
-    // preventing page from redirecting
+    // preventing page from redirecting on drop and dragover
     $("html").on("dragover", function (e) {
         e.preventDefault();
         e.stopPropagation();
-        $(".dropzone h2").text("Drag here");
     });
 
-    $("html").on("drop", function (e) { e.preventDefault(); e.stopPropagation(); });
+    $("html").on("drop", function (e) { 
+        e.preventDefault(); 
+        e.stopPropagation(); 
+        //$("#dropzone h2").remove();
+        errorMsg("You must drag the file into the marked area");
+        $(".dropzone h2").text("Drag and Drop csv file with conversation here\nor\nClick to select file");
+        $('.dropzone h2').html(escaped.replace(/\n/g, '<br />'));
+    });
 
     // Drag enter
     $('.dropzone').on('dragenter', function (e) {
@@ -46,12 +52,24 @@ $(function () {
         $(".dropzone h2").text("Drop");
     });
 
+    // Drag outside of dropzone area
+    $('.dropzone').on('dragleave', function (e) {
+        e.stopPropagation();
+        e.preventDefault();
+        $(".dropzone h2").text("Drag here");
+    });
+
+    // Drag end
+    $('.dropzone').on('dragend', function (e) {
+        e.stopPropagation();
+        e.preventDefault();
+        $(".dropzone h2").text("End");
+    });
+
     // Drop
     $('.dropzone').on('drop', function (e) {
         e.stopPropagation();
         e.preventDefault();
-
-        $(".dropzone h2").text("Upload");
 
         var file = e.originalEvent.dataTransfer.files;
         var fd = new FormData();
