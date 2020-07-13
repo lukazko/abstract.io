@@ -122,7 +122,7 @@ h1 {
     margin-top: 150px;
     font-weight: normal;
     line-height: 50px;
-    color: darkslategray;
+    color: #2f4f4f;
     white-space: pre-wrap;
 }
 
@@ -195,6 +195,12 @@ input:focus::placeholder {
     /*height: 350px;*/
     text-align: center;
     padding-top: 10%;
+}
+
+.result-zone-loader {
+    /*margin-top: 50px;*/
+    /*height: 350px;*/
+    display: none;
 }
 
 .result-zone table {

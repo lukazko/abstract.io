@@ -227,8 +227,8 @@ function initDragzone() {
 // Function for generation of result rows
 function getResult() {
 
-    // Get number of result from input
-    var num = $('#number-of-results').val().trim();
+    var num = $('#number-of-results').val().trim(); // Get number of result from input
+    $('.result-zone img').fadeIn(); // Loading before table is generated
 
     $.ajax({
         url: 'php/result.php', // The URL of the PHP file that searches MySQL
@@ -248,6 +248,7 @@ function getResult() {
             }
 
             else {
+                $('.result-zone img').fadeOut();
                 // for each result create table row
                 $.each(results, function (key, value) {
                     $('.result-table').append('<tr class="result-row" id="result-row-' + key + '">');
