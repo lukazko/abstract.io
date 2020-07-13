@@ -180,7 +180,13 @@ h1 {
 
 input:focus::placeholder {
     color: transparent;
-  }
+}
+
+.loader {
+    width: 54px;
+    height: 54px;
+    margin-top: 20px;
+}
 
 /*-----------*/
 /* 3rd Page  */
@@ -195,12 +201,6 @@ input:focus::placeholder {
     /*height: 350px;*/
     text-align: center;
     padding-top: 10%;
-}
-
-.result-zone-loader {
-    /*margin-top: 50px;*/
-    /*height: 350px;*/
-    display: none;
 }
 
 .result-zone table {

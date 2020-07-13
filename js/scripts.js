@@ -29,8 +29,13 @@ $(function () {
         e.stopPropagation();
     });
 
-    // preventing page from redirecting on drop and error message about that
     $("html").on("drop", function (e) { 
+        e.preventDefault(); 
+        e.stopPropagation(); 
+    });
+
+    // preventing page from redirecting on drop and error message about that
+    $("#container-1").on("drop", function (e) { 
         e.preventDefault(); 
         e.stopPropagation(); 
         errorMsg("You must drag the file into the marked area."); // Error message if file is dropped outside of marked area
@@ -46,7 +51,7 @@ $(function () {
     });
 
     // Drag outside of site
-    $('html').on('dragleave', function (e) {
+    $('#container-1').on('dragleave', function (e) {
         e.stopPropagation();
         e.preventDefault();
         
@@ -85,6 +90,7 @@ $(function () {
     $('.dropzone').on('drop', function (e) {
         e.stopPropagation();
         e.preventDefault();
+        $(".dropzone h2").text("Drag and Drop csv file with conversation here\nor\nClick to select file");
 
         var file = e.originalEvent.dataTransfer.files;
         var fd = new FormData();
@@ -217,8 +223,8 @@ function processFile() {
     }
 }
 
+// Reload dragzone to initial state
 function initDragzone() {
-    // Reload dragzone to initial state
     $(".thumbnail").remove();
     $("#dropzone h2").remove();
     $("#dropzone").append('<h2>Drag and Drop csv file with conversation here<br />or<br />Click to select file</h2>');
@@ -228,7 +234,7 @@ function initDragzone() {
 function getResult() {
 
     var num = $('#number-of-results').val().trim(); // Get number of result from input
-    $('.result-zone img').fadeIn(); // Loading before table is generated
+    $('#loader-space').append('<img class="loader" src="img/ring-loader.svg" />'); // Loading before table is generated
 
     $.ajax({
         url: 'php/result.php', // The URL of the PHP file that searches MySQL
@@ -248,7 +254,7 @@ function getResult() {
             }
 
             else {
-                $('.result-zone img').fadeOut();
+                $('.loader').remove();
                 // for each result create table row
                 $.each(results, function (key, value) {
                     $('.result-table').append('<tr class="result-row" id="result-row-' + key + '">');
